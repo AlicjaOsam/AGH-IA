@@ -7,12 +7,8 @@ im(im>0.5) = 1;
 im(im<=0.5) = 0;
 imshow(im);
 
-%liczba eulera - ilosc dziur na obrazie (bez 1)
-
 % im = bwmorph(im,'remove');
 % imshow(im);
-
-%szkielet - jednakowa odleglosc od dwoch krawedzi
 
 sk = bwmorph(im,'skel',Inf);
 imshow(sk);
@@ -27,7 +23,7 @@ imshow(sk);
 % im = bwmorph(im,'thin',Inf);
 % imshow(im);
 
-% im = bwmorph(im,'thicken',Inf); %dylatacja bez laczenia obiektow - segmentacj$
+% im = bwmorph(im,'thicken',Inf);
 % imshow(im);
 
 l = bwlabel(im);
@@ -49,8 +45,6 @@ imshow(d,[0,max(d,[],'all')]);
 
 l = watershed(d);
 
-%norma czebyszewa
-%metryka szachowa
 d = bwdist(im,'chessboard');
 imshow(d,[0,max(d,[],'all')]);
 l = watershed(d);
