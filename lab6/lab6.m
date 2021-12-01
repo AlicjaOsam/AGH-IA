@@ -38,12 +38,6 @@ imshow(prop.Image);
 subplot(2,1,2);
 imshow(l==4);
 
-%wsp. Malinowskiej - porownujemy figury do kola
-%wsp. Blair-Blim - odleglosc pikseli od srodka (dla kola najmniejsza)
-%wsp. Daniellsona - srednia odleglosc od krawedM = zeros(n, length(fun));zi (dl$
-%wsp. Haralicka - odleglosc krawedzi od srodka
-%wsp. Feretta - stosunek rozpietosci osi x i y
-
 % AO5RBlairBliss(prop.Image)
 %
 % a = regionprops(im, 'all');
