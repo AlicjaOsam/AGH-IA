@@ -38,12 +38,6 @@ imshow(prop.Image);
 subplot(2,1,2);
 imshow(l==4);
 
-%wsp. Malinowskiej - porownujemy figury do kola
-%wsp. Blair-Blim - odleglosc pikseli od srodka (dla kola najmniejsza)
-%wsp. Daniellsona - srednia odleglosc od krawedM = zeros(n, length(fun));zi (dl$
-%wsp. Haralicka - odleglosc krawedzi od srodka
-%wsp. Feretta - stosunek rozpietosci osi x i y
-
 % AO5RBlairBliss(prop.Image)
 %
 % a = regionprops(im, 'all');
@@ -63,13 +57,11 @@ for i = 1:8
 end
 
 %LAB 7
-%nietypowe wartosci (ostatni wiersz), ktore kaczki odbiegaja od reszty
 % m = mean(M);
 % s = std(M);
 % out = abs(M-m)./s;
 % out = out>1.8;
 % out = max(out,[],2);
-% %usuwamy elementy nietypowe
 % M(out,:) = [];
 
 im = double(imread('ptaki2.jpg'))/255;
@@ -137,7 +129,6 @@ n3 = size(M3, 1);
 in = [M', M2', M3'];
 out = [repmat([1;0;0], [1,n]), repmat([0;1;0], [1,n2]), repmat([0;0;1], [1,n3])$
 
-%siec neuronowa
 nn = feedforwardnet;
 nn = train(nn, in, out);
 
