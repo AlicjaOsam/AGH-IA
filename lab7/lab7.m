@@ -38,6 +38,12 @@ imshow(prop.Image);
 subplot(2,1,2);
 imshow(l==4);
 
+%wsp. Malinowskiej - porownujemy figury do kola
+%wsp. Blair-Blim - odleglosc pikseli od srodka (dla kola najmniejsza)
+%wsp. Daniellsona - srednia odleglosc od krawedM = zeros(n, length(fun));zi (dl$
+%wsp. Haralicka - odleglosc krawedzi od srodka
+%wsp. Feretta - stosunek rozpietosci osi x i y
+
 % AO5RBlairBliss(prop.Image)
 %
 % a = regionprops(im, 'all');
@@ -47,7 +53,7 @@ imshow(l==4);
 % M = zeros(n, length(fun));
 
 a = regionprops(im, 'all');
-fun = {@AO5RBlairBliss, @AO5RCircularityL, @AO5RCircularityS, @AO5RDanielsson, $
+fun = {@AO5RBlairBliss, @AO5RCircularityL, @AO5RCircularityS, @AO5RDanielsson, @AO5RFeret, @AO5RHaralick, @AO5RMalinowska, @AO5RShape};
 M = zeros(n, length(fun));
 
 for i = 1:8
@@ -57,11 +63,13 @@ for i = 1:8
 end
 
 %LAB 7
+% %nietypowe wartosci (ostatni wiersz), ktore kaczki odbiegaja od reszty
 % m = mean(M);
 % s = std(M);
 % out = abs(M-m)./s;
 % out = out>1.8;
 % out = max(out,[],2);
+% %usuwamy elementy nietypowe
 % M(out,:) = [];
 
 im = double(imread('ptaki2.jpg'))/255;
@@ -107,7 +115,7 @@ n = max(l, [], 'all');
 % prop.Area;
 
 a = regionprops(im, 'all');
-fun = {@AO5RBlairBliss, @AO5RCircularityL, @AO5RCircularityS, @AO5RDanielsson, $
+fun = {@AO5RBlairBliss, @AO5RCircularityL, @AO5RCircularityS, @AO5RDanielsson, @AO5RFeret, @AO5RHaralick, @AO5RMalinowska, @AO5RShape};
 M2 = zeros(n, length(fun));
 
 for i = 1:n
@@ -127,11 +135,12 @@ n2 = size(M2, 1);
 n3 = size(M3, 1);
 
 in = [M', M2', M3'];
-out = [repmat([1;0;0], [1,n]), repmat([0;1;0], [1,n2]), repmat([0;0;1], [1,n3])$
+out = [repmat([1;0;0], [1,n]), repmat([0;1;0], [1,n2]), repmat([0;0;1], [1,n3])];
 
+% %siec neuronowa
 nn = feedforwardnet;
 nn = train(nn, in, out);
 
-nn(in(:,1))
-nn(in)
+% nn(in(:,1))
+% nn(in)
 
